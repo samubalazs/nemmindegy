@@ -2,7 +2,7 @@ import dayjs from "dayjs"
 import { useEffect, useState } from "react"
 
 export default function Home() {
-  const baseUrl = process.env.NEXT_PUBLIC_SERVER_BASE_URL
+  const baseUrl = "https://nemmindegy.azurewebsites.net"
   const [messages, setMessages] = useState([])
   useEffect(() => {
     fetch(`${baseUrl}/get-messages`)
