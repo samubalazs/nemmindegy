@@ -1,3 +1,5 @@
+import path = require("path")
+
 require("dotenv").config()
 const express = require("express")
 const cors = require("cors")
@@ -27,6 +29,11 @@ app.get("/get-messages", (req, res) => {
   Message.find()
     .then((messages) => res.json(messages))
     .catch((err) => console.log(err))
+})
+
+app.use(express.static("client/build"))
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"))
 })
 
 app.listen(port, () => {
